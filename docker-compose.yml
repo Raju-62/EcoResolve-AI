@@ -1,0 +1,30 @@
+services:
+  postgres:
+    image: postgres:16
+    environment:
+      POSTGRES_DB: ecoresolve
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+  backend:
+    build: ./backend
+    environment:
+      SPRING_PROFILE: postgres
+      DB_URL: jdbc:postgresql://postgres:5432/ecoresolve
+      DB_USERNAME: postgres
+      DB_PASSWORD: postgres
+      JWT_SECRET: ChangeThisDockerSecretBeforeProduction123456789
+      ADMIN_EMAIL: admin@example.com
+      ADMIN_PASSWORD: ChangeMe123!
+      CORS_ORIGINS: http://localhost:5500
+    ports:
+      - "8080:8080"
+    depends_on:
+      - postgres
+
+volumes:
+  postgres_data:

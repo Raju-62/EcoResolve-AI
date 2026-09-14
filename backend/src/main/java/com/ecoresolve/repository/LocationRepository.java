@@ -1,0 +1,1 @@
+package com.ecoresolve.repository; import com.ecoresolve.entity.Location; import org.springframework.data.jpa.repository.JpaRepository; public interface LocationRepository extends JpaRepository<Location,Long>{}

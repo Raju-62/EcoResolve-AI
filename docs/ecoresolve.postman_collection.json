@@ -1,0 +1,11 @@
+{
+  "info":{"name":"EcoResolve AI API","schema":"https://schema.getpostman.com/json/collection/v2.1.0/collection.json"},
+  "variable":[{"key":"base","value":"http://localhost:8080/api"},{"key":"token","value":""}],
+  "item":[
+    {"name":"Register","request":{"method":"POST","header":[{"key":"Content-Type","value":"application/json"}],"body":{"mode":"raw","raw":"{\n  \"name\": \"Demo Student\",\n  \"email\": \"student@example.com\",\n  \"password\": \"password123\"\n}"},"url":{"raw":"{{base}}/auth/register","host":["{{base}}"],"path":["auth","register"]}}},
+    {"name":"Login","request":{"method":"POST","header":[{"key":"Content-Type","value":"application/json"}],"body":{"mode":"raw","raw":"{\n  \"email\": \"student@example.com\",\n  \"password\": \"password123\"\n}"},"url":{"raw":"{{base}}/auth/login","host":["{{base}}"],"path":["auth","login"]}}},
+    {"name":"Locations","request":{"method":"GET","url":{"raw":"{{base}}/locations","host":["{{base}}"],"path":["locations"]}}},
+    {"name":"Create Complaint","request":{"method":"POST","header":[{"key":"Content-Type","value":"application/json"},{"key":"Authorization","value":"Bearer {{token}}"}],"body":{"mode":"raw","raw":"{\n  \"description\": \"The tap beside Lab 2 has been leaking since yesterday.\",\n  \"locationId\": 4\n}"},"url":{"raw":"{{base}}/complaints","host":["{{base}}"],"path":["complaints"]}}},
+    {"name":"My Complaints","request":{"method":"GET","header":[{"key":"Authorization","value":"Bearer {{token}}"}],"url":{"raw":"{{base}}/complaints?page=0&size=10","host":["{{base}}"],"path":["complaints"],"query":[{"key":"page","value":"0"},{"key":"size","value":"10"}]}}}
+  ]
+}

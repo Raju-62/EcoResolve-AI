@@ -1,0 +1,3 @@
+{
+  "note": "Add an actual IBM BOB-supported MCP server configuration here only when the required server, transport and authentication details are available. Do not use this example as a fabricated production configuration."
+}

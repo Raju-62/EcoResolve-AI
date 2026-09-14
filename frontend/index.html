@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width,initial-scale=1" name="viewport"/>
+  <title>
+   EcoResolve AI
+  </title>
+  <link href="style.css" rel="stylesheet"/>
+ </head>
+ <body>
+  <header class="nav">
+   <a class="brand" href="#home">
+    EcoResolve
+    <span>
+     AI
+    </span>
+   </a>
+   <nav>
+    <a href="#home">
+     Home
+    </a>
+    <a href="#how">
+     How it works
+    </a>
+    <a href="#login" onclick="show('login');return false">
+     Login
+    </a>
+    <button class="primary" onclick="show('register')">
+     Get Started
+    </button>
+   </nav>
+  </header>
+  <main id="app">
+   <section class="hero" id="home">
+    <div>
+     <p class="eyebrow">
+      AI + SUSTAINABILITY
+     </p>
+     <h1>
+      Turn sustainability complaints into
+      <span>
+       actionable insights.
+      </span>
+     </h1>
+     <p class="lead">
+      Report environmental and resource-related issues, let AI organize the information, and help administrators act on recurring problems.
+     </p>
+     <div class="actions">
+      <button class="primary" onclick="show('register')">
+       Submit a Complaint
+      </button>
+      <button class="secondary" onclick="show('login')">
+       Admin / Student Login
+      </button>
+     </div>
+    </div>
+    <div class="hero-card">
+     <div class="mini-title">
+      AI Sustainability Insight
+     </div>
+     <h3>
+      💧 Water issue hotspot
+     </h3>
+     <p>
+      Laboratory Block B
+     </p>
+     <div class="metric">
+      14
+      <small>
+       complaints
+      </small>
+     </div>
+     <div class="pill high">
+      HIGH PRIORITY
+     </div>
+     <p class="muted">
+      Suggested action: inspect water fixtures and plumbing infrastructure.
+     </p>
+    </div>
+   </section>
+   <section class="section" id="how">
+    <p class="eyebrow">
+     HOW IT WORKS
+    </p>
+    <h2>
+     From report to impact.
+    </h2>
+    <div class="grid three">
+     <article>
+      <b>
+       01
+      </b>
+      <h3>
+       Report
+      </h3>
+      <p>
+       Students or staff describe a sustainability issue and its location.
+      </p>
+     </article>
+     <article>
+      <b>
+       02
+      </b>
+      <h3>
+       Analyze
+      </h3>
+      <p>
+       AI classifies, summarizes and recommends a suitable priority and action.
+      </p>
+     </article>
+     <article>
+      <b>
+       03
+      </b>
+      <h3>
+       Improve
+      </h3>
+      <p>
+       Administrators resolve issues and analyze patterns across complaints.
+      </p>
+     </article>
+    </div>
+   </section>
+   <section class="section soft">
+    <p class="eyebrow">
+     RESPONSIBLE AI
+    </p>
+    <h2>
+     AI assists. Humans decide.
+    </h2>
+    <p class="lead narrow">
+     EcoResolve preserves the original complaint and AI recommendation while allowing administrators to review or override the final category, priority and status.
+    </p>
+   </section>
+   <section class="auth section" id="login">
+    <div class="form-card">
+     <h2>
+      Welcome back
+     </h2>
+     <p class="muted">
+      Login to EcoResolve AI
+     </p>
+     <form onsubmit="login(event)">
+      <input id="lemail" placeholder="Email" required="" type="email"/>
+      <input id="lpassword" placeholder="Password" required="" type="password"/>
+      <button class="primary full">
+       Login
+      </button>
+     </form>
+     <p class="msg" id="loginMsg">
+     </p>
+     <p class="muted">
+      New user?
+      <a href="#register" onclick="show('register');return false">
+       Create an account
+      </a>
+     </p>
+     <p class="demo-note">
+      <b>
+       Demo admin:
+      </b>
+      admin@ecoresolve.local / Admin@12345
+     </p>
+    </div>
+   </section>
+   <section class="auth section" id="register">
+    <div class="form-card">
+     <h2>
+      Create your account
+     </h2>
+     <p class="muted">
+      Student accounts are created with the STUDENT role.
+     </p>
+     <form onsubmit="register(event)">
+      <input id="rname" placeholder="Full name" required=""/>
+      <input id="remail" placeholder="Email" required="" type="email"/>
+      <input id="rpassword" minlength="8" placeholder="Password (8+ characters)" required="" type="password"/>
+      <button class="primary full">
+       Create Account
+      </button>
+     </form>
+     <p class="msg" id="regMsg">
+     </p>
+    </div>
+   </section>
+   <section class="section hidden" id="dashboard">
+    <div class="topline">
+     <div>
+      <p class="eyebrow">
+       DASHBOARD
+      </p>
+      <h2 id="welcome">
+       Welcome
+      </h2>
+     </div>
+     <button class="secondary" onclick="logout()">
+      Logout
+     </button>
+    </div>
+    <div class="grid four" id="stats">
+    </div>
+    <div class="panel">
+     <div class="topline">
+      <h3>
+       My Complaints
+      </h3>
+      <button class="primary" onclick="openComplaintForm()">
+       + New Complaint
+      </button>
+     </div>
+     <div id="complaints">
+     </div>
+    </div>
+   </section>
+   <section class="section hidden" id="complaintDetail">
+    <div class="topline">
+     <div>
+      <p class="eyebrow">
+       COMPLAINT DETAILS
+      </p>
+      <h2>
+       AI analysis
+      </h2>
+     </div>
+     <button class="secondary" onclick="show('dashboard')">
+      &larr; Back to dashboard
+     </button>
+    </div>
+    <div id="detailContent">
+    </div>
+   </section>
+   <section class="auth section hidden" id="newComplaint">
+    <div class="form-card wide">
+     <h2>
+      Report a sustainability issue
+     </h2>
+     <p class="muted">
+      Describe what happened. The AI workflow will categorize it and suggest a priority.
+     </p>
+     <form onsubmit="createComplaint(event)">
+      <textarea id="desc" placeholder="Example: The tap beside Lab 2 has been leaking since yesterday." required="" rows="6"></textarea>
+      <select id="location" required="">
+       <option value="">
+        Select location
+       </option>
+      </select>
+      <input id="imageUrl" placeholder="Optional image URL"/>
+      <button class="primary full">
+       Submit Complaint
+      </button>
+     </form>
+     <p class="msg" id="complaintMsg">
+     </p>
+    </div>
+   </section>
+   <section class="section hidden" id="admin">
+    <div class="topline">
+     <div>
+      <p class="eyebrow">
+       ADMIN PORTAL
+      </p>
+      <h2>
+       Institution sustainability overview
+      </h2>
+     </div>
+     <button class="secondary" onclick="logout()">
+      Logout
+     </button>
+    </div>
+    <div class="grid four" id="adminStats">
+    </div>
+    <div class="grid two">
+     <div class="panel">
+      <h3>
+       Complaint distribution
+      </h3>
+      <div id="analytics">
+      </div>
+     </div>
+     <div class="panel">
+      <h3>
+       AI Sustainability Insights
+      </h3>
+      <button class="primary" onclick="generateInsights()">
+       Generate Insights
+      </button>
+      <div id="insights">
+      </div>
+     </div>
+    </div>
+    <div class="panel">
+     <div class="topline">
+      <h3>
+       All complaints
+      </h3>
+      <button class="secondary" onclick="loadAdmin()">
+       Refresh
+      </button>
+     </div>
+     <div id="adminComplaints">
+     </div>
+    </div>
+   </section>
+  </main>
+  <footer>
+   EcoResolve AI &middot; AI for Sustainability project prototype
+  </footer>
+  <script src="app.js">
+  </script>
+ </body>
+</html>

@@ -1,0 +1,3 @@
+package com.ecoresolve.controller;
+import com.ecoresolve.dto.AuthDtos.*; import com.ecoresolve.service.AuthService; import jakarta.validation.Valid; import lombok.RequiredArgsConstructor; import org.springframework.http.*; import org.springframework.web.bind.annotation.*; import java.util.Map;
+@RestController @RequestMapping("/api/auth") @RequiredArgsConstructor public class AuthController { private final AuthService auth; @PostMapping("/register") public ResponseEntity<?> register(@Valid @RequestBody RegisterRequest r){auth.register(r);return ResponseEntity.status(HttpStatus.CREATED).body(Map.of("message","Registration successful"));} @PostMapping("/login") public AuthResponse login(@Valid @RequestBody LoginRequest r){return auth.login(r);} }

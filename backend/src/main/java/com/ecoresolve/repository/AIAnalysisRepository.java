@@ -1,0 +1,1 @@
+package com.ecoresolve.repository; import com.ecoresolve.entity.AIAnalysis; import org.springframework.data.jpa.repository.JpaRepository; import java.util.List; public interface AIAnalysisRepository extends JpaRepository<AIAnalysis,Long>{ List<AIAnalysis> findByComplaintIdOrderByCreatedAtDesc(Long complaintId); }
