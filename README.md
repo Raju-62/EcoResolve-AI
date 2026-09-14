@@ -1,69 +1,145 @@
 # EcoResolve AI
 
-AI-assisted sustainability complaint and insight platform built as a working prototype for the AI for Sustainability Virtual Internship.
+### AI-Powered Sustainability Complaint Analyzer
 
-## What is included
+EcoResolve AI is a simple web-based platform for reporting and managing sustainability-related problems in an institution.
 
-- Spring Boot 3.5 backend, Java 21
-- PostgreSQL target database + H2 development profile
-- JWT authentication and BCrypt password hashing
-- Student complaint submission and tracking
-- AI classification/summarization/recommendation MVP (deterministic rule-based adapter)
-- Admin complaint review and human override
-- Complaint history/audit trail
-- Analytics and sustainability insights
-- Responsive HTML/CSS/JavaScript frontend
-- IBM BOB development assets: `agent.md`, `dobb/skills`, rules and workflow documentation
-- Project documentation mapped to the internship guidelines
+Students can report issues such as water leakage, unnecessary electricity usage, waste problems, or other environmental concerns. The system uses AI to analyze the complaint and suggest a category, priority, and possible action.
 
-## Important AI note
+An admin can review the complaint, make changes if needed, and update its status.
 
-The included AI adapter is intentionally a local, deterministic MVP so the project runs without an external AI credential. Replace `AIService` with the approved IBM AI/Granite/BOB-connected runtime workflow when credentials and access are available. IBM BOB is treated as a development assistant in this repository, consistent with the supplied BOB training summary; it is not represented as a fake runtime API.
+## Problem
 
-## Run backend
+In colleges and other institutions, small sustainability problems can easily go unnoticed or take time to reach the right person.
 
-1. Install Java 21 and Maven.
-2. From `backend/`, run `mvn spring-boot:run`.
-3. Default profile is H2, stored under `backend/data/`.
-4. For PostgreSQL set `SPRING_PROFILE=postgres`, `DB_URL`, `DB_USERNAME`, and `DB_PASSWORD`.
-5. Optional admin bootstrap: set `ADMIN_EMAIL`, `ADMIN_PASSWORD`, and optionally `ADMIN_NAME` before starting the server.
+For example:
 
-## Run frontend
+- A leaking tap may continue wasting water.
+- Lights or fans may be left on unnecessarily.
+- Waste may not be properly managed.
+- Repeated problems may be difficult to identify.
 
-From `frontend/`:
+EcoResolve AI aims to make this reporting and review process more organized.
 
-```bash
-python -m http.server 5500
-```
+## How It Works
 
-Open `http://localhost:5500`.
+1. A student logs in and submits a complaint.
+2. The system analyzes the complaint using AI.
+3. The complaint is given a category and priority.
+4. An admin reviews the complaint and takes action.
+5. The status can be updated until the issue is resolved.
+6. The admin dashboard provides basic information about reported issues.
 
-## Demo flow
+## Main Features
 
-1. Register a student.
-2. Login.
-3. Submit a complaint such as: `The tap beside Lab 2 has been leaking since yesterday.`
-4. View the AI category/priority/recommendation.
-5. Create an admin using environment variables and login as admin.
-6. Review complaints, analytics and generated insights.
+- Student registration and login
+- Sustainability complaint submission
+- AI-based complaint classification
+- AI-based priority suggestion
+- Suggested action for the complaint
+- Admin dashboard
+- Complaint status management
+- Basic analytics
+- Sustainability insights
 
-## Security
+## AI Used
 
-- Never commit real JWT secrets, DB passwords or admin credentials.
-- Change `app.jwt.secret` in production.
-- The included H2 profile is for local demonstration only.
+The current prototype uses a small rule-based AI component for the demonstration.
 
-## Internship alignment
+It identifies keywords and patterns in a complaint to suggest:
 
-Primary SDG: SDG 11 (Sustainable Cities and Communities), with secondary relevance to SDG 6, SDG 7 and SDG 12. The project uses AI for classification, summarization, pattern/insight generation and decision support, while preserving human administrative review.
+- Complaint category
+- Priority
+- Summary
+- Recommended action
 
-## Fast Windows Demo
+The AI part is kept separate in the backend so that it can be replaced with an approved AI/Granite-based service in the future.
 
-1. Install Java 21, Maven 3.9+, and Python 3.
-2. Double-click `run-backend.bat`.
-3. Double-click `run-frontend.bat`.
-4. Open `http://localhost:5500`.
+## IBM BOB
 
-Demo admin: `admin@ecoresolve.local` / `Admin@12345`
+IBM BOB was used during the development of the project.
 
-For the full walkthrough, see `QUICKSTART-WINDOWS.md`.
+It helped with:
+
+- Understanding and navigating the project code
+- Organizing reusable development skills
+- Supporting development tasks
+- Maintaining development rules and instructions
+
+The project also includes the BOB-related files and skills used during development.
+
+## SDG Connection
+
+The main SDG connected with EcoResolve AI is:
+
+**SDG 11 – Sustainable Cities and Communities**
+
+The project also has relevance to:
+
+- SDG 6 – Clean Water and Sanitation
+- SDG 7 – Affordable and Clean Energy
+- SDG 12 – Responsible Consumption and Production
+
+## Responsible AI
+
+The system is designed with human review in mind.
+
+AI suggestions are not treated as final decisions. An admin can review and change the suggested category or priority before taking action.
+
+The project also considers:
+
+- Privacy of user information
+- Transparency of AI suggestions
+- Human oversight
+- Fair treatment of complaints
+
+## Prototype Screenshots
+
+### Home Page
+
+![EcoResolve AI Home](screenshots/01-home.png)
+
+### Student Dashboard
+
+![Student Dashboard](screenshots/02-student-dashboard.png)
+
+### AI Analysis
+
+![AI Analysis](screenshots/03-ai-analysis.png)
+
+### Admin Dashboard
+
+![Admin Dashboard](screenshots/04-admin-dashboard.png)
+
+### Complaint Management
+
+![Complaint Management](screenshots/05-admin-complaints.png)
+
+### Analytics and Insights
+
+![Analytics](screenshots/06-analytics-insights.png)
+
+## Technology Used
+
+- Java
+- Spring Boot
+- Spring Security
+- H2 Database
+- HTML
+- CSS
+- JavaScript
+- Maven
+- Git/GitHub
+
+## Project Structure
+
+```text
+EcoResolve-AI/
+├── backend/
+├── frontend/
+├── db/
+├── dobb/
+├── docs/
+├── screenshots/
+├── README.md
+└── agent.md
