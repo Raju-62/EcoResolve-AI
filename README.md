@@ -117,7 +117,7 @@ The project also considers:
 
 ### Analytics and Insights
 
-![Analytics](screenshots/06-analytics-insights.png)
+![Analytics](screenshots/06-analytic-insights.png)
 
 ## Technology Used
 
